@@ -24,7 +24,7 @@ describe('index.test.js', function () {
     var app = koa();
     jsonp(app);
     app.use(function* () {
-      this.body = this.jsonp({foo: 'bar'});
+      this.jsonp = {foo: 'bar'};
     });
 
     request(app.listen())
@@ -39,7 +39,7 @@ describe('index.test.js', function () {
     var app = koa();
     jsonp(app);
     app.use(function* () {
-      this.body = this.jsonp({foo: 'bar'});
+      this.jsonp = {foo: 'bar'};
     });
 
     request(app.listen())
@@ -50,13 +50,43 @@ describe('index.test.js', function () {
     .expect(200, done);
   });
 
+  it('should send number response', function (done) {
+    var app = koa();
+    jsonp(app);
+    app.use(function* () {
+      this.jsonp = 1984;
+    });
+
+    request(app.listen())
+    .get('/foo.json?callback=fn')
+    .expect('Content-Type', 'application/javascript')
+    .expect('X-Content-Type-Options', 'nosniff')
+    .expect('/**/ typeof fn === \'function\' && fn(1984);')
+    .expect(200, done);
+  });
+
+  it('should send string response', function (done) {
+    var app = koa();
+    jsonp(app);
+    app.use(function* () {
+      this.jsonp = '1984';
+    });
+
+    request(app.listen())
+    .get('/foo.json?callback=fn')
+    .expect('Content-Type', 'application/javascript')
+    .expect('X-Content-Type-Options', 'nosniff')
+    .expect('/**/ typeof fn === \'function\' && fn("1984");')
+    .expect(200, done);
+  });
+
   it('should send jsonp response with custom callback', function (done) {
     var app = koa();
     jsonp(app, {
       callback: '_callback'
     });
     app.use(function* () {
-      this.body = this.jsonp({foo: 'bar'});
+      this.jsonp = {foo: 'bar'};
     });
 
     request(app.listen())

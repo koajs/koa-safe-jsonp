@@ -9,7 +9,7 @@ jsonp(app, {
 });
 
 app.use(function* () {
-  this.body = this.jsonp({foo: 'bar'});
+  this.jsonp = {foo: 'bar'};
 });
 
 app.listen(1984);

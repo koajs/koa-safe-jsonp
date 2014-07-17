@@ -21,16 +21,18 @@ module.exports = jsonp;
 function jsonp(app, options) {
   options = options || {};
   var callback = options.callback || 'callback';
-  app.context.jsonp = function (obj) {
-    this.set('X-Content-Type-Options', 'nosniff');
-    var body = jsonpBody(obj, this.query[callback]);
-    if (body.indexOf('/**/') === 0) {
-      // jsonp response
-      this.type = 'js';
-    } else {
-      // normal json response
-      this.type = 'json';
+  Object.defineProperty(app.context, 'jsonp', {
+    set: function (obj) {
+      this.set('X-Content-Type-Options', 'nosniff');
+      var body = jsonpBody(obj, this.query[callback]);
+      if (body.indexOf('/**/') === 0) {
+        // jsonp response
+        this.type = 'js';
+      } else {
+        // normal json response
+        this.type = 'json';
+      }
+      this.body = body;
     }
-    return body;
-  };
+  });
 }
