@@ -5,6 +5,7 @@ koa-safe-jsonp
 [![build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 [![Gittip][gittip-image]][gittip-url]
+[![David deps][david-image]][david-url]
 
 [npm-image]: https://img.shields.io/npm/v/koa-safe-jsonp.svg?style=flat
 [npm-url]: https://npmjs.org/package/koa-safe-jsonp
@@ -14,6 +15,8 @@ koa-safe-jsonp
 [coveralls-url]: https://coveralls.io/r/koajs/koa-safe-jsonp?branch=master
 [gittip-image]: https://img.shields.io/gittip/fengmk2.svg?style=flat
 [gittip-url]: https://www.gittip.com/fengmk2/
+[david-image]: https://img.shields.io/david/koajs/koa-safe-jsonp.svg?style=flat
+[david-url]: https://david-dm.org/koajs/koa-safe-jsonp
 
 Safe jsonp plusins for koa.
 
