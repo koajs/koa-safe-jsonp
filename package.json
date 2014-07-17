@@ -1,6 +1,6 @@
 {
   "name": "koa-safe-jsonp",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Safe jsonp plusins for koa.",
   "main": "index.js",
   "scripts": {
