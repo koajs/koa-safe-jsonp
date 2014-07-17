@@ -3,8 +3,6 @@ koa-safe-jsonp
 
 [![Build Status](https://secure.travis-ci.org/koajs/koa-safe-jsonp.png)](http://travis-ci.org/koajs/koa-safe-jsonp)
 
-[![Dependency Status](https://gemnasium.com/koajs/koa-safe-jsonp.png)](https://gemnasium.com/koajs/koa-safe-jsonp)
-
 [![NPM](https://nodei.co/npm/koa-safe-jsonp.png?downloads=true&stars=true)](https://nodei.co/npm/koa-safe-jsonp/)
 
 Safe jsonp plusins for koa.
