@@ -1,0 +1,46 @@
+{
+  "name": "koa-safe-jsonp",
+  "version": "0.0.0",
+  "description": "Safe jsonp plusins for koa.",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test-all"
+  },
+  "config": {
+    "cov": {
+      "threshold": 100
+    }
+  },
+  "dependencies": {
+    "jsonp-body": "~0.1.0"
+  },
+  "devDependencies": {
+    "autod": "*",
+    "contributors": "*",
+    "cov": "*",
+    "istanbul-harmony": "*",
+    "jshint": "*",
+    "koa": "~0.8.1",
+    "mocha": "*",
+    "should": "~4.0.4",
+    "supertest": "~0.13.0"
+  },
+  "homepage": "https://github.com/koajs/koa-safe-jsonp",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/koajs/koa-safe-jsonp.git",
+    "web": "https://github.com/koajs/koa-safe-jsonp"
+  },
+  "bugs": {
+    "url": "https://github.com/koajs/koa-safe-jsonp/issues",
+    "email": "fengmk2@gmail.com"
+  },
+  "keywords": [
+    "jsonp", "koa"
+  ],
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "author": "fengmk2 <fengmk2@gmail.com> (http://fengmk2.github.com)",
+  "license": "MIT"
+}
