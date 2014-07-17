@@ -1,3 +1,5 @@
+"use strict";
+
 var jsonp = require('./');
 var koa = require('koa');
 
