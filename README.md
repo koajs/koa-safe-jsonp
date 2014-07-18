@@ -74,6 +74,26 @@ $ curl 'http://127.0.0.1:1984/foo.json?_callback=fn' -v
 /**/ typeof fn === 'function' && fn({"foo":"bar"});
 ```
 
+## middleware
+
+koa-safe-jsonp also provide a koa middleware
+
+```js
+var jsonp = require('koa-safe-jsonp');
+var koa = require('koa');
+
+var app = koa();
+app.use(jsonp({
+  callback: '_callback' // default is 'callback'
+}));
+
+app.use(function* () {
+  this.body = {foo: "bar"};
+});
+
+app.listen(1984);
+```
+
 ## License
 
 (The MIT License)

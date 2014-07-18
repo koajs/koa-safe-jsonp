@@ -16,7 +16,7 @@
 
 var jsonpBody = require('jsonp-body');
 
-module.exports = jsonp;
+exports = module.exports = jsonp;
 
 function jsonp(app, options) {
   options = options || {};
@@ -36,3 +36,18 @@ function jsonp(app, options) {
     }
   });
 }
+
+exports.middleware = function (options) {
+  options = options || {};
+  var callback = options.callback || 'callback';
+
+  return function* (next) {
+    yield* next;
+
+    if (this.method === 'GET' && this.query[callback]) {
+      this.set('X-Content-Type-Options', 'nosniff');
+      this.body = jsonpBody(this.body, this.query[callback]);
+      this.type = 'js';
+    }
+  };
+};
