@@ -44,7 +44,8 @@ exports.middleware = function (options) {
   return function* (next) {
     yield* next;
 
-    if (this.method === 'GET' && this.query[callback]) {
+    if (this.method === 'GET' && this.query[callback] &&
+      (this.type === 'application/json' || this.type === 'text/plain')) {
       this.set('X-Content-Type-Options', 'nosniff');
       this.body = jsonpBody(this.body, this.query[callback]);
       this.type = 'js';

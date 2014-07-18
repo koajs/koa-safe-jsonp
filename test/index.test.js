@@ -128,6 +128,20 @@ describe('index.test.js - middleware', function () {
     .expect(200, done);
   });
 
+  it('should send json response when response is not json or text', function (done) {
+    var app = koa();
+    app.use(jsonp.middleware());
+    app.use(function* () {
+      this.body = '<h1>foo:bar</h1>';
+    });
+
+    request(app.listen())
+    .get('/foo.json?foo=fn')
+    .expect('Content-Type', 'text/html; charset=utf-8')
+    .expect('<h1>foo:bar</h1>')
+    .expect(200, done);
+  });
+
   it('should send jsonp response with default callback', function (done) {
     var app = koa();
     app.use(jsonp.middleware());
