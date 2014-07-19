@@ -20,7 +20,7 @@ var request = require('supertest');
 var jsonp = require('../');
 
 describe('index.test.js', function () {
-  it('should send jsonp response without padding when callback missing', function (done) {
+  it('should send normal response when callback missing', function (done) {
     var app = koa();
     jsonp(app);
     app.use(function* () {
@@ -30,7 +30,20 @@ describe('index.test.js', function () {
     request(app.listen())
     .get('/foo.json?foo=fn')
     .expect('Content-Type', 'application/json; charset=utf-8')
-    .expect('X-Content-Type-Options', 'nosniff')
+    .expect('{"foo":"bar"}')
+    .expect(200, done);
+  });
+
+  it('should send normal response when callback is empty string', function (done) {
+    var app = koa();
+    jsonp(app);
+    app.use(function* () {
+      this.jsonp = {foo: 'bar'};
+    });
+
+    request(app.listen())
+    .get('/foo.json?foo=fn&callback=')
+    .expect('Content-Type', 'application/json; charset=utf-8')
     .expect('{"foo":"bar"}')
     .expect(200, done);
   });
