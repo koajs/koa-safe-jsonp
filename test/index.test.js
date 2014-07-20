@@ -16,6 +16,7 @@
 
 var should = require('should');
 var koa = require('koa');
+var qs = require('koa-qs');
 var request = require('supertest');
 var jsonp = require('../');
 
@@ -57,6 +58,22 @@ describe('index.test.js', function () {
 
     request(app.listen())
     .get('/foo.json?callback=fn')
+    .expect('Content-Type', 'application/javascript')
+    .expect('X-Content-Type-Options', 'nosniff')
+    .expect('/**/ typeof fn === \'function\' && fn({"foo":"bar"});')
+    .expect(200, done);
+  });
+
+  it('should send jsonp response with array callback', function (done) {
+    var app = koa();
+    qs(app);
+    jsonp(app);
+    app.use(function* () {
+      this.jsonp = {foo: 'bar'};
+    });
+
+    request(app.listen())
+    .get('/foo.json?callback=fn&callback=cb')
     .expect('Content-Type', 'application/javascript')
     .expect('X-Content-Type-Options', 'nosniff')
     .expect('/**/ typeof fn === \'function\' && fn({"foo":"bar"});')

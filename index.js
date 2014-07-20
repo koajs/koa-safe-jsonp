@@ -24,8 +24,7 @@ function jsonp(app, options) {
 
   Object.defineProperty(app.context, 'jsonp', {
     set: function (obj) {
-      var cb = this.query[callback];
-      if (typeof cb !== 'string' || cb === '') {
+      if (!this.query[callback]) {
         return this.body = obj;
       }
 
