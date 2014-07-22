@@ -126,4 +126,40 @@ describe('index.test.js', function () {
     .expect('/**/ typeof $jsonp_callback === \'function\' && $jsonp_callback({"foo":"bar"});')
     .expect(200, done);
   });
+
+  it('should limit callback name length to 10', function (done) {
+    var app = koa();
+    jsonp(app, {
+      callback: '_callback',
+      limit: 10
+    });
+    app.use(function* () {
+      this.jsonp = {foo: 'bar'};
+    });
+
+    request(app.listen())
+    .get('/foo.json?_callback=$123456789jsonp_callbackjsonp_callbackjsonp_callback')
+    .expect('Content-Type', 'application/javascript')
+    .expect('X-Content-Type-Options', 'nosniff')
+    .expect('/**/ typeof $123456789 === \'function\' && $123456789({"foo":"bar"});')
+    .expect(200, done);
+  });
+
+  it('should dont limit when callback name length < limit options', function (done) {
+    var app = koa();
+    jsonp(app, {
+      callback: '_callback',
+      limit: 10
+    });
+    app.use(function* () {
+      this.jsonp = {foo: 'bar'};
+    });
+
+    request(app.listen())
+    .get('/foo.json?_callback=$123')
+    .expect('Content-Type', 'application/javascript')
+    .expect('X-Content-Type-Options', 'nosniff')
+    .expect('/**/ typeof $123 === \'function\' && $123({"foo":"bar"});')
+    .expect(200, done);
+  });
 });

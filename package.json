@@ -12,7 +12,7 @@
     }
   },
   "dependencies": {
-    "jsonp-body": "~0.1.0"
+    "jsonp-body": "~0.2.0"
   },
   "devDependencies": {
     "autod": "*",

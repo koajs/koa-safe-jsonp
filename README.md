@@ -34,7 +34,8 @@ var koa = require('koa');
 
 var app = koa();
 jsonp(app, {
-  callback: '_callback' // default is 'callback'
+  callback: '_callback', // default is 'callback'
+  limit: 50, // max callback name string length, default is 512
 });
 
 app.use(function* () {

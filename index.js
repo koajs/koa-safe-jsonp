@@ -30,7 +30,7 @@ function jsonp(app, options) {
 
       this.set('X-Content-Type-Options', 'nosniff');
       this.type = 'js';
-      this.body = jsonpBody(obj, this.query[callback]);
+      this.body = jsonpBody(obj, this.query[callback], options);
     }
   });
 }
