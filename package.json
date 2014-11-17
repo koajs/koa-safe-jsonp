@@ -1,7 +1,7 @@
 {
   "name": "koa-safe-jsonp",
   "version": "0.3.0",
-  "description": "Safe jsonp plusins for koa.",
+  "description": "Safe jsonp plugins for koa.",
   "main": "index.js",
   "scripts": {
     "test": "make test-all"
