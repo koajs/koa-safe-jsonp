@@ -6,25 +6,19 @@
   "scripts": {
     "test": "make test-all"
   },
-  "config": {
-    "cov": {
-      "threshold": 100
-    }
-  },
   "dependencies": {
-    "jsonp-body": "~0.2.0"
+    "jsonp-body": "~1.0.0"
   },
   "devDependencies": {
     "autod": "*",
     "contributors": "*",
-    "cov": "*",
     "istanbul-harmony": "*",
     "jshint": "*",
-    "koa": "~0.8.1",
-    "koa-qs": "~1.0.0",
+    "koa": "~0.13.0",
+    "koa-qs": "~1.0.1",
     "mocha": "*",
-    "should": "~4.0.4",
-    "supertest": "~0.13.0"
+    "should": "~4.3.0",
+    "supertest": "~0.15.0"
   },
   "homepage": "https://github.com/koajs/koa-safe-jsonp",
   "repository": {

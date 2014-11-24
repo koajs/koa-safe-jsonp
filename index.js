@@ -24,13 +24,14 @@ function jsonp(app, options) {
 
   Object.defineProperty(app.context, 'jsonp', {
     set: function (obj) {
-      if (!this.query[callback]) {
+      var jsonpFunction = this.query[callback];
+      if (!jsonpFunction) {
         return this.body = obj;
       }
 
       this.set('X-Content-Type-Options', 'nosniff');
       this.type = 'js';
-      this.body = jsonpBody(obj, this.query[callback], options);
+      this.body = jsonpBody(obj, jsonpFunction, options);
     }
   });
 }

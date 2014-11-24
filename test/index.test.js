@@ -58,7 +58,7 @@ describe('index.test.js', function () {
 
     request(app.listen())
     .get('/foo.json?callback=fn')
-    .expect('Content-Type', 'application/javascript')
+    .expect('Content-Type', 'application/javascript; charset=utf-8')
     .expect('X-Content-Type-Options', 'nosniff')
     .expect('/**/ typeof fn === \'function\' && fn({"foo":"bar"});')
     .expect(200, done);
@@ -74,7 +74,7 @@ describe('index.test.js', function () {
 
     request(app.listen())
     .get('/foo.json?callback=fn&callback=cb')
-    .expect('Content-Type', 'application/javascript')
+    .expect('Content-Type', 'application/javascript; charset=utf-8')
     .expect('X-Content-Type-Options', 'nosniff')
     .expect('/**/ typeof fn === \'function\' && fn({"foo":"bar"});')
     .expect(200, done);
@@ -89,7 +89,7 @@ describe('index.test.js', function () {
 
     request(app.listen())
     .get('/foo.json?callback=fn')
-    .expect('Content-Type', 'application/javascript')
+    .expect('Content-Type', 'application/javascript; charset=utf-8')
     .expect('X-Content-Type-Options', 'nosniff')
     .expect('/**/ typeof fn === \'function\' && fn(1984);')
     .expect(200, done);
@@ -104,7 +104,7 @@ describe('index.test.js', function () {
 
     request(app.listen())
     .get('/foo.json?callback=fn')
-    .expect('Content-Type', 'application/javascript')
+    .expect('Content-Type', 'application/javascript; charset=utf-8')
     .expect('X-Content-Type-Options', 'nosniff')
     .expect('/**/ typeof fn === \'function\' && fn("1984");')
     .expect(200, done);
@@ -121,7 +121,7 @@ describe('index.test.js', function () {
 
     request(app.listen())
     .get('/foo.json?_callback=$jsonp_callback')
-    .expect('Content-Type', 'application/javascript')
+    .expect('Content-Type', 'application/javascript; charset=utf-8')
     .expect('X-Content-Type-Options', 'nosniff')
     .expect('/**/ typeof $jsonp_callback === \'function\' && $jsonp_callback({"foo":"bar"});')
     .expect(200, done);
@@ -139,7 +139,7 @@ describe('index.test.js', function () {
 
     request(app.listen())
     .get('/foo.json?_callback=$123456789jsonp_callbackjsonp_callbackjsonp_callback')
-    .expect('Content-Type', 'application/javascript')
+    .expect('Content-Type', 'application/javascript; charset=utf-8')
     .expect('X-Content-Type-Options', 'nosniff')
     .expect('/**/ typeof $123456789 === \'function\' && $123456789({"foo":"bar"});')
     .expect(200, done);
@@ -157,7 +157,7 @@ describe('index.test.js', function () {
 
     request(app.listen())
     .get('/foo.json?_callback=$123')
-    .expect('Content-Type', 'application/javascript')
+    .expect('Content-Type', 'application/javascript; charset=utf-8')
     .expect('X-Content-Type-Options', 'nosniff')
     .expect('/**/ typeof $123 === \'function\' && $123({"foo":"bar"});')
     .expect(200, done);

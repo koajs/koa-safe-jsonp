@@ -26,7 +26,6 @@ test-cov cov: install
 		--timeout $(TIMEOUT) \
 		$(MOCHA_OPTS) \
 		$(TESTS)
-	@-./node_modules/.bin/cov coverage
 
 test-travis: install
 	@NODE_ENV=test node --harmony \
