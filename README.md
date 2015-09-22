@@ -3,18 +3,15 @@ koa-safe-jsonp
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
-[![Test coverage][coveralls-image]][coveralls-url]
-[![Gittip][gittip-image]][gittip-url]
+[![Test coverage][codecov-image]][codecov-url]
 [![David deps][david-image]][david-url]
 
 [npm-image]: https://img.shields.io/npm/v/koa-safe-jsonp.svg?style=flat
 [npm-url]: https://npmjs.org/package/koa-safe-jsonp
 [travis-image]: https://img.shields.io/travis/koajs/koa-safe-jsonp.svg?style=flat
 [travis-url]: https://travis-ci.org/koajs/koa-safe-jsonp
-[coveralls-image]: https://img.shields.io/coveralls/koajs/koa-safe-jsonp.svg?style=flat
-[coveralls-url]: https://coveralls.io/r/koajs/koa-safe-jsonp?branch=master
-[gittip-image]: https://img.shields.io/gittip/fengmk2.svg?style=flat
-[gittip-url]: https://www.gittip.com/fengmk2/
+[codecov-image]: https://codecov.io/github/koajs/koa-safe-jsonp/coverage.svg?branch=master
+[codecov-url]: https://codecov.io/github/koajs/koa-safe-jsonp?branch=master
 [david-image]: https://img.shields.io/david/koajs/koa-safe-jsonp.svg?style=flat
 [david-url]: https://david-dm.org/koajs/koa-safe-jsonp
 
@@ -77,4 +74,4 @@ $ curl 'http://127.0.0.1:1984/foo.json?_callback=fn' -v
 
 ## License
 
-MIT
+[MIT](./LICENSE)
