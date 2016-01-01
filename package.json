@@ -19,9 +19,9 @@
     "istanbul-harmony": "*",
     "jshint": "*",
     "koa": "1",
-    "koa-qs": "1",
+    "koa-qs": "2.0.0",
     "mocha": "*",
-    "should": "7",
+    "should": "8.0.2",
     "supertest": "1"
   },
   "homepage": "https://github.com/koajs/koa-safe-jsonp",
@@ -35,7 +35,8 @@
     "email": "fengmk2@gmail.com"
   },
   "keywords": [
-    "jsonp", "koa"
+    "jsonp",
+    "koa"
   ],
   "engines": {
     "node": ">= 1.0.0"
