@@ -1,6 +1,6 @@
 'use strict';
 
-const jsonp = require('.');
+const jsonp = require('..');
 const koa = require('koa');
 
 const app = koa();
