@@ -1,4 +1,4 @@
-koa-safe-jsonp
+[koa-safe-jsonp][github-repo]
 =======
 
 [![NPM version][npm-image]][npm-url]
@@ -6,6 +6,7 @@ koa-safe-jsonp
 [![Test coverage][codecov-image]][codecov-url]
 [![David deps][david-image]][david-url]
 
+[github-repo]: https://github.com/koajs/koa-safe-jsonp
 [npm-image]: https://img.shields.io/npm/v/koa-safe-jsonp.svg?style=flat
 [npm-url]: https://npmjs.org/package/koa-safe-jsonp
 [travis-image]: https://img.shields.io/travis/koajs/koa-safe-jsonp.svg?style=flat
@@ -15,28 +16,31 @@ koa-safe-jsonp
 [david-image]: https://img.shields.io/david/koajs/koa-safe-jsonp.svg?style=flat
 [david-url]: https://david-dm.org/koajs/koa-safe-jsonp
 
-Safe jsonp plusins for koa.
+Safe jsonp plugins for koa.
 
 ## Install
 
 ```bash
-$ npm install koa-safe-jsonp
+# npm .. 
+$ npm i koa-safe-jsonp
+# yarn ..
+$ yarn add koa-safe-jsonp
 ```
 
 ## Usage
 
 ```js
-var jsonp = require('koa-safe-jsonp');
-var koa = require('koa');
+const jsonp = require('koa-safe-jsonp');
+const Koa = require('Koa');
 
-var app = koa();
+const app = new Koa();
 jsonp(app, {
   callback: '_callback', // default is 'callback'
   limit: 50, // max callback name string length, default is 512
 });
 
-app.use(function* () {
-  this.jsonp = {foo: "bar"};
+app.use(function (ctx) {
+  ctx.jsonp = {foo: "bar"};
 });
 
 app.listen(1984);
@@ -74,4 +78,4 @@ $ curl 'http://127.0.0.1:1984/foo.json?_callback=fn' -v
 
 ## License
 
-[MIT](./LICENSE)
+[MIT](LICENSE)
