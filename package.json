@@ -16,13 +16,15 @@
   },
   "devDependencies": {
     "contributors": "*",
+    "eslint-config-xo-lass": "^1.0.3",
     "istanbul-harmony": "*",
     "jshint": "*",
     "koa": "1",
     "koa-qs": "1",
     "mocha": "*",
     "should": "7",
-    "supertest": "1"
+    "supertest": "1",
+    "xo": "^0.32.0"
   },
   "homepage": "https://github.com/koajs/koa-safe-jsonp",
   "repository": {
@@ -41,5 +43,27 @@
     "node": ">= 1.0.0"
   },
   "author": "fengmk2 <fengmk2@gmail.com> (http://fengmk2.com)",
-  "license": "MIT"
+  "license": "MIT",
+  "prettier": {
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "trailingComma": "none"
+  },
+  "xo": {
+    "prettier": true,
+    "space": true,
+    "extends": [
+      "xo-lass"
+    ],
+    "ignore": [
+      "test",
+      "demo.js"
+    ],
+    "rules": {
+      "node/no-deprecated-api": "off",
+      "no-unused-vars": "off",
+      "no-prototype-builtins": "off",
+      "prefer-rest-params": "off"
+    }
+  }
 }
