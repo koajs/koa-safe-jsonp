@@ -1,36 +1,23 @@
-/**!
- * Copyright(c) koajs and other contributors.
- * MIT Licensed
- *
- * Authors:
- *   fengmk2 <fengmk2@gmail.com> (http://fengmk2.com)
- */
-
 'use strict';
 
-/**
- * Module dependencies.
- */
+const jsonpBody = require('jsonp-body');
 
-var jsonpBody = require('jsonp-body');
-
-module.exports = jsonp;
-
-function jsonp(app, options) {
+// eslint-disable-next-line func-names
+module.exports = function jsonp(ctx, options) {
   options = options || {};
-  var callback = options.callback || 'callback';
+  const callback = options.callback || 'callback';
 
-  Object.defineProperty(app.context, 'jsonp', {
-    set: function (obj) {
-      var jsonpFunction = this.query[callback];
-      if (!jsonpFunction) {
-        return this.body = obj;
-      }
+  // eslint-disable-next-line accessor-pairs
+  Object.defineProperty(ctx, 'jsonp', {
+    set(object) {
+      const jsonpFunc = this.query[callback];
+      // eslint-disable-next-line no-return-assign
+      if (!jsonpFunc) return (this.body = object); // eslint-disable-line no-setter-return
 
       this.set('X-Content-Type-Options', 'nosniff');
       this.type = 'js';
-      this.body = jsonpBody(obj, jsonpFunction, options);
+      this.body = jsonpBody(object, jsonpFunc, options);
     },
     configurable: true
   });
-}
+};
