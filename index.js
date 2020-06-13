@@ -3,12 +3,12 @@
 const jsonpBody = require('jsonp-body');
 
 // eslint-disable-next-line func-names
-module.exports = function jsonp(ctx, options) {
+module.exports = function jsonp(app, options) {
   options = options || {};
   const callback = options.callback || 'callback';
 
   // eslint-disable-next-line accessor-pairs
-  Object.defineProperty(ctx, 'jsonp', {
+  Object.defineProperty(app.context, 'jsonp', {
     set(object) {
       const jsonpFunc = this.query[callback];
       // eslint-disable-next-line no-return-assign
