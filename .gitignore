@@ -1,4 +1,27 @@
-coverage.html
+#       OS        #
+###################
+.DS_Store
+.idea
+Thumbs.db
+tmp/
+temp/
+
+
+#     Node.js     #
+###################
+node_modules
+package-lock.json
+
+
+#       NYC       #
+###################
+coverage
+*.lcov
+.nyc_output
+
+
+#      Files      #
+###################
 *.seed
 *.log
 *.csv
@@ -6,11 +29,3 @@ coverage.html
 *.out
 *.pid
 *.gz
-
-pids
-logs
-results
-
-node_modules
-npm-debug.log
-coverage/
