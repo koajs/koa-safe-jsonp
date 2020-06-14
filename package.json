@@ -69,7 +69,7 @@
       "prefer-rest-params": "off"
     }
   },
-  "node": ">= 8",
+  "node": ">= 10",
   "homepage": "https://github.com/koajs/koa-safe-jsonp",
   "bugs": {
     "url": "https://github.com/koajs/koa-safe-jsonp/issues",
