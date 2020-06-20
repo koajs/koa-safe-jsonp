@@ -6,40 +6,75 @@
   "files": [
     "index.js"
   ],
-  "scripts": {
-    "test": "mocha -R spec -t 1000 -r should test/*.test.js",
-    "test-cov": "istanbul cover node_modules/.bin/_mocha -- -t 1000 -r should test/*.test.js",
-    "jshint": "jshint ."
-  },
-  "dependencies": {
-    "jsonp-body": "~1.0.0"
-  },
-  "devDependencies": {
-    "contributors": "*",
-    "istanbul-harmony": "*",
-    "jshint": "*",
-    "koa": "1",
-    "koa-qs": "1",
-    "mocha": "*",
-    "should": "7",
-    "supertest": "1"
-  },
-  "homepage": "https://github.com/koajs/koa-safe-jsonp",
   "repository": {
     "type": "git",
     "url": "git://github.com/koajs/koa-safe-jsonp.git",
     "web": "https://github.com/koajs/koa-safe-jsonp"
   },
+  "scripts": {
+    "lint": "xo",
+    "pretest": "npm run lint",
+    "test": "mocha --exit",
+    "precoverage": "rimraf .nyc_output coverage",
+    "coverage": "nyc npm run test",
+    "preci": "echo start CI ........",
+    "ci": "npm run coverage"
+  },
+  "keywords": [
+    "jsonp",
+    "safe-jsonp",
+    "koa"
+  ],
+  "dependencies": {
+    "jsonp-body": "~1.0.0"
+  },
+  "devDependencies": {
+    "eslint-config-xo-lass": "^1.0.3",
+    "koa": "^2.12.0",
+    "koa-qs": "^3.0.0",
+    "mocha": "^8.0.1",
+    "nyc": "^15.1.0",
+    "rimraf": "^3.0.2",
+    "supertest": "^4.0.2",
+    "xo": "^0.32.0"
+  },
+  "author": "fengmk2 <fengmk2@gmail.com> (http://fengmk2.com)",
+  "contributors": [
+    "dead_horse <heyiyu.deadhorse@gmail.com> (https://github.com/dead-horse)",
+    "3imed-jaberi <imed_jebari@hotmail.fr> (https://www.3imed-jaberi.com)",
+    "yongbo000 <yongbo.hello@gmail.com> (https://github.com/yongbo000)",
+    "coolme200 <tangyao@alibaba-inc.com> (http://coolme200.github.com)",
+    "yongbo000 <yongbo.hello@gmail.com>"
+  ],
+  "license": "MIT",
+  "prettier": {
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "trailingComma": "none"
+  },
+  "xo": {
+    "prettier": true,
+    "space": true,
+    "extends": [
+      "xo-lass"
+    ],
+    "ignore": [
+      "test",
+      "examples"
+    ],
+    "rules": {
+      "node/no-deprecated-api": "off",
+      "no-unused-vars": "off",
+      "no-prototype-builtins": "off",
+      "prefer-rest-params": "off"
+    }
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "homepage": "https://github.com/koajs/koa-safe-jsonp",
   "bugs": {
     "url": "https://github.com/koajs/koa-safe-jsonp/issues",
     "email": "fengmk2@gmail.com"
-  },
-  "keywords": [
-    "jsonp", "koa"
-  ],
-  "engines": {
-    "node": ">= 1.0.0"
-  },
-  "author": "fengmk2 <fengmk2@gmail.com> (http://fengmk2.com)",
-  "license": "MIT"
+  }
 }
